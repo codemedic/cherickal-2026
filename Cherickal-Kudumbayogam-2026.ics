@@ -1,0 +1,51 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ical.marudot.com//iCal Event Maker
+X-WR-CALNAME:ചേരിക്കൽ കുടുംബയോഗം
+NAME:ചേരിക്കൽ കുടുംബയോഗം
+REFRESH-INTERVAL;VALUE=DURATION:P60M
+CALSCALE:GREGORIAN
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+LAST-MODIFIED:20250410T142247Z
+TZURL:https://www.tzurl.org/zoneinfo-outlook/Asia/Kolkata
+X-LIC-LOCATION:Asia/Kolkata
+BEGIN:STANDARD
+TZNAME:IST
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20260701T230535Z
+UID:1767649803041-36995@ical.marudot.com
+DTSTART;TZID=Asia/Kolkata:20260815T100000
+DTEND;TZID=Asia/Kolkata:20260815T160000
+SUMMARY;LANGUAGE=ml:ചേരിക്കൽ കുടുംബയോഗം
+SUMMARY;LANGUAGE=en:Cherickal Kudumbayogam
+DESCRIPTION;LANGUAGE=ml:ചേരിക്കൽ കുടുംബയോ
+ ഗം 2026\n\nസ്ഥലം: പാണമ്പടി മർത്ത
+ മറിയം യാക്കോബായ സുറിയാനി 
+ പള്ളി ഹാൾ\, വേളൂർ\nGoogle Map: https://maps.app.
+ goo.gl/tw3Erge8vNEjJDay7\n\n
+DESCRIPTION;LANGUAGE=en:Cherickal Kudumbayogam 2026\n\nPlace: Panampaddy St
+ . Mary's Jacobite Syrian Church Hall\, Veloor\nGoogle Map: https://maps.ap
+ p.goo.gl/tw3Erge8vNEjJDay7\n\n
+LOCATION:https://maps.app.goo.gl/tw3Erge8vNEjJDay7
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION;LANGUAGE=ml:ചേരിക്കൽ കുടുംബയോ
+ ഗം
+DESCRIPTION;LANGUAGE=en:Cherickal Kudumbayogam
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION;LANGUAGE=ml:ചേരിക്കൽ കുടുംബയോ
+ ഗം
+DESCRIPTION;LANGUAGE=en:Cherickal Kudumbayogam
+TRIGGER:-P1W
+END:VALARM
+END:VEVENT
+END:VCALENDAR
