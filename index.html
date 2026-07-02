@@ -258,7 +258,7 @@
     .btn-secondary:hover {
       background: rgba(255, 255, 255, 0.08);
       transform: translateY(-2px);
-    }}
+    }
 
     .btn-secondary:active {
       transform: translateY(1px);
@@ -302,8 +302,8 @@
       <h2>Cherickal Kudumbayogam</h2>
     </div>
 
-    <!-- Poster wrapper links directly to the hosted ICS file -->
-    <a href="Cherickal-Kudumbayogam-2026.ics" download="Cherickal-Kudumbayogam-2026.ics" class="poster-wrapper" title="Click to Add to Calendar">
+    <!-- Poster wrapper links to calendar (configured dynamically by script) -->
+    <a href="Cherickal-Kudumbayogam-2026.ics" download="Cherickal-Kudumbayogam-2026.ics" class="poster-wrapper" id="posterLink" title="Click to Add to Calendar">
       <img class="poster-img" src="poster.jpeg" alt="Cherickal Kudumbayogam 2026 Poster">
       <div class="poster-badge">
         <span class="badge-icon">📅</span> Add to Calendar
@@ -340,10 +340,16 @@
     </div>
 
     <div class="actions">
-      <!-- Add to Calendar button links directly to the hosted ICS file -->
+      <!-- Primary Action Button (configured dynamically by script) -->
       <a href="Cherickal-Kudumbayogam-2026.ics" download="Cherickal-Kudumbayogam-2026.ics" class="btn btn-primary" id="addToCalendarBtn">
         <span class="btn-icon">📅</span> Add to Calendar
       </a>
+      
+      <!-- Secondary Action Button for cross-platform fallback -->
+      <a href="#" class="btn btn-secondary" id="secondaryCalendarBtn" style="display: none;">
+        <span class="btn-icon">📅</span> Add to Calendar
+      </a>
+      
       <a href="https://maps.app.goo.gl/tw3Erge8vNEjJDay7" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
         <span class="btn-icon">📍</span> Open in Google Maps
       </a>
@@ -353,6 +359,47 @@
       © 2026 Cherickal Family. All rights reserved.
     </div>
   </div>
+
+  <script>
+    // URL-encoded Google Calendar template link for Android/Google users (UTC time conversion applied)
+    const googleCalendarUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E0%B4%9A%E0%B5%87%E0%B4%B0%E0%B4%BF%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B4%B2%E0%B5%8D%E2%80%8D+%E0%B4%95%E0%B5%81%E0%B4%9f%E0%B5%81%E0%B4%82%E0%B4%AC%E0%B4%AF%E0%B5%8B%E0%B4%97%E0%B4%82+2026&dates=20260815T043000Z%2F20260815T103000Z&details=%E0%B4%9A%E0%B5%87%E0%B4%B0%E0%B4%BF%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B4%B2%E0%B5%8D%E2%80%8D+%E0%B4%95%E0%B5%81%E0%B4%9f%E0%B5%81%E0%B4%82%E0%B4%AC%E0%B4%AF%E0%B5%8B%E0%B4%97%E0%B4%82+2026%0A%0A%E0%B4%B8%E0%B5%8D%E0%B4%A5%E0%B4%B2%E0%B4%82%3A+%E0%B4%AA%E0%B4%BE%E0%B4%A3%E0%B4%ae%E0%B5%8d%E0%B4%aa%E0%B4%a1%E0%B4%bf+%E0%B4%ae%E0%B5%BC%E0%B4%A4%E0%B5%8d%E0%B4%A4%E0%B4%ae%E0%B4%b1%E0%B4%bf%E0%B4%af%E0%B4%b8%E0%B5%8D+%E0%B4%AA%E0%B4%b3%E0%B5%8d%E0%B4%b3%E0%B4%bf+%E0%B4%b9%E0%B4%be%E0%B5%BE%2C+%E0%B4%B5%E0%B5%87%E0%B4%b3%E0%B5%82%E0%B5%BC%0A%0AGoogle+Map%3A+https%3A%2F%2Fmaps.app.goo.gl%2Ftw3Erge8vNEjJDay7&location=Panampaddy+St.+Mary%27s+Jacobite+Syrian+Church+Hall%2C+Veloor";
+    
+    const icsUrl = "Cherickal-Kudumbayogam-2026.ics";
+
+    // Detect if the user is on an Android device
+    const isAndroid = /Android/i.test(navigator.userAgent);
+
+    const addBtn = document.getElementById('addToCalendarBtn');
+    const posterLink = document.getElementById('posterLink');
+    const secondaryBtn = document.getElementById('secondaryCalendarBtn');
+
+    if (isAndroid) {
+      // 1. Android experience: Redirect primary actions to Google Calendar
+      addBtn.href = googleCalendarUrl;
+      addBtn.target = "_blank";
+      addBtn.removeAttribute('download');
+      
+      posterLink.href = googleCalendarUrl;
+      posterLink.target = "_blank";
+      posterLink.removeAttribute('download');
+
+      // 2. Offer ICS download as secondary action
+      secondaryBtn.href = icsUrl;
+      secondaryBtn.setAttribute('download', 'Cherickal-Kudumbayogam-2026.ics');
+      secondaryBtn.style.display = "inline-flex";
+      secondaryBtn.innerHTML = '<span class="btn-icon">🍏</span> Download for Apple / Outlook';
+    } else {
+      // 1. iOS / Desktop experience: Set primary actions to download ICS file
+      addBtn.href = icsUrl;
+      posterLink.href = icsUrl;
+
+      // 2. Offer Google Calendar link as secondary action
+      secondaryBtn.href = googleCalendarUrl;
+      secondaryBtn.target = "_blank";
+      secondaryBtn.style.display = "inline-flex";
+      secondaryBtn.innerHTML = '<span class="btn-icon">🤖</span> Add to Google Calendar';
+    }
+  </script>
 
 </body>
 </html>
